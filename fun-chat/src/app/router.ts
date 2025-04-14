@@ -10,17 +10,13 @@ function getCurrentPathname(): string {
 }
 
 export default class Router {
+  public boundHandleLink: (href: string) => void;
+
   constructor(private routeObjects: RouteObject[]) {
+    this.boundHandleLink = this.handleLink.bind(this);
+
     globalThis.addEventListener('popstate', () => this.initialLoad());
   }
-
-  public handleLink = (href: string): void => {
-    const currentHref = getCurrentHref();
-
-    if (currentHref !== href) {
-      this.navigate(href);
-    }
-  };
 
   public initialLoad(): void {
     const currentPathname = getCurrentPathname();
@@ -49,4 +45,12 @@ export default class Router {
   private getCurrentRouteObj(pathname: string): RouteObject | undefined {
     return this.routeObjects.find((route) => route.pathname === pathname);
   }
+
+  private handleLink = (href: string): void => {
+    const currentHref = getCurrentHref();
+
+    if (currentHref !== href) {
+      this.navigate(href);
+    }
+  };
 }
