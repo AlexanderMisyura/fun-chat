@@ -60,13 +60,13 @@ export default class BaseComponent<K extends keyof HTMLElementTagNameMap = 'div'
     return this;
   }
 
-  public appendSingleSVG(svgElement: SVGSVGElement): this {
+  public appendSingleSVG(svgElement: SVGElement): this {
     this.element.append(svgElement);
 
     return this;
   }
 
-  public prependSingleSVG(svgElement: SVGSVGElement): this {
+  public prependSingleSVG(svgElement: SVGElement): this {
     this.element.prepend(svgElement);
 
     return this;
