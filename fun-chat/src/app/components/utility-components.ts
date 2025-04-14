@@ -11,6 +11,12 @@ const a = (
   ...children: BaseComponent<keyof HTMLElementTagNameMap>[]
 ): BaseComponent<'a'> => new BaseComponent<'a'>({ ...properties, elementTag: 'a' }, ...children);
 
+const aside = (
+  properties: UtilityTagProperties<'aside'>,
+  ...children: BaseComponent<keyof HTMLElementTagNameMap>[]
+): BaseComponent<'aside'> =>
+  new BaseComponent<'aside'>({ ...properties, elementTag: 'aside' }, ...children);
+
 const button = (
   properties: UtilityTagProperties<'button'>,
   ...children: BaseComponent<keyof HTMLElementTagNameMap>[]
@@ -33,6 +39,12 @@ const h1 = (
   properties: UtilityTagProperties<'h1'>,
   ...children: BaseComponent<keyof HTMLElementTagNameMap>[]
 ): BaseComponent<'h1'> => new BaseComponent({ ...properties, elementTag: 'h1' }, ...children);
+
+const header = (
+  properties: UtilityTagProperties<'header'>,
+  ...children: BaseComponent<keyof HTMLElementTagNameMap>[]
+): BaseComponent<'header'> =>
+  new BaseComponent({ ...properties, elementTag: 'header' }, ...children);
 
 const img = (properties: UtilityTagProperties<'img'>): BaseComponent<'img'> =>
   new BaseComponent<'img'>({ ...properties, elementTag: 'img' });
@@ -75,10 +87,12 @@ const ul = (
 
 export default {
   a,
+  aside,
   button,
   details,
   div,
   h1,
+  header,
   img,
   input,
   label,
