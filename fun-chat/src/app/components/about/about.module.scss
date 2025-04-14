@@ -1,0 +1,28 @@
+.about {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+
+  max-inline-size: 650px;
+
+  font-family: Enigma, monospace;
+  text-align: justify;
+}
+
+.heading {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.link {
+  color: gray;
+  transition: color 0.3s;
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      color: black;
+    }
+  }
+}
