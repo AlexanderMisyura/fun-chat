@@ -1,3 +1,4 @@
+import type { State, Transition } from '@ts-enums';
 import type { Context, MachineDefinition, MachinePayload } from '@ts-types';
 
 import Emitter from './event-emitter-machine';
@@ -17,8 +18,8 @@ export class StateMachine {
   }
 
   public makeTransition(
-    currentState: string,
-    trigger: string,
+    currentState: State,
+    trigger: Transition,
     contextData?: Partial<Context>
   ): string | void {
     const currentStateDefinition = this.definition.states[currentState];

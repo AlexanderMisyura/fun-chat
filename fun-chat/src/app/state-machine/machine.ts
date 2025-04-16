@@ -1,41 +1,43 @@
+import { Route } from '@constants';
+import { State, Transition } from '@ts-enums';
 import type { MachineDefinition } from '@ts-types';
 
 import { StateMachine } from './machine-class';
 
 const stateMachineDefinition: MachineDefinition = {
-  initialState: 'state:initial',
+  initialState: State.INITIAL,
 
   context: {
-    currentRoute: '/',
+    currentRoute: Route.ROOT,
   },
 
   states: {
-    'state:initial': {
+    [State.INITIAL]: {
       actions: {
         onEnter() {},
         onExit() {},
       },
       transitions: {
-        navigateLogin: {
-          target: 'state:login',
+        [Transition.NAVIGATE_LOGIN]: {
+          target: State.LOGIN,
           action(payload) {
-            payload.updateContext({ currentRoute: '/login' });
+            payload.updateContext({ currentRoute: Route.LOGIN });
           },
         },
-        navigateChat: {
-          target: 'state:chat',
+        [Transition.NAVIGATE_CHAT]: {
+          target: State.CHAT,
           action(payload) {
-            payload.updateContext({ currentRoute: '/chat' });
+            payload.updateContext({ currentRoute: Route.CHAT });
           },
         },
-        navigateAbout: {
-          target: 'state:about',
+        [Transition.NAVIGATE_ABOUT]: {
+          target: State.ABOUT,
           action(payload) {
-            payload.updateContext({ currentRoute: '/about' });
+            payload.updateContext({ currentRoute: Route.ABOUT });
           },
         },
-        navigateError: {
-          target: 'state:404',
+        [Transition.NAVIGATE_ERROR]: {
+          target: State.ERROR,
           action(payload) {
             const { contextData } = payload;
             if (contextData?.currentRoute) {
@@ -45,26 +47,26 @@ const stateMachineDefinition: MachineDefinition = {
         },
       },
     },
-    'state:login': {
+    [State.LOGIN]: {
       actions: {
         onEnter() {},
         onExit() {},
       },
       transitions: {
-        navigateChat: {
-          target: 'state:chat',
+        [Transition.NAVIGATE_CHAT]: {
+          target: State.CHAT,
           action(payload) {
-            payload.updateContext({ currentRoute: '/chat' });
+            payload.updateContext({ currentRoute: Route.CHAT });
           },
         },
-        navigateAbout: {
-          target: 'state:about',
+        [Transition.NAVIGATE_ABOUT]: {
+          target: State.ABOUT,
           action(payload) {
-            payload.updateContext({ currentRoute: '/about' });
+            payload.updateContext({ currentRoute: Route.ABOUT });
           },
         },
-        navigateError: {
-          target: 'state:404',
+        [Transition.NAVIGATE_ERROR]: {
+          target: State.ERROR,
           action(payload) {
             const { contextData } = payload;
             if (contextData?.currentRoute) {
@@ -74,26 +76,26 @@ const stateMachineDefinition: MachineDefinition = {
         },
       },
     },
-    'state:chat': {
+    [State.CHAT]: {
       actions: {
         onEnter() {},
         onExit() {},
       },
       transitions: {
-        navigateLogin: {
-          target: 'state:login',
+        [Transition.NAVIGATE_LOGIN]: {
+          target: State.LOGIN,
           action(payload) {
-            payload.updateContext({ currentRoute: '/login' });
+            payload.updateContext({ currentRoute: Route.LOGIN });
           },
         },
-        navigateAbout: {
-          target: 'state:about',
+        [Transition.NAVIGATE_ABOUT]: {
+          target: State.ABOUT,
           action(payload) {
-            payload.updateContext({ currentRoute: '/about' });
+            payload.updateContext({ currentRoute: Route.ABOUT });
           },
         },
-        navigateError: {
-          target: 'state:404',
+        [Transition.NAVIGATE_ERROR]: {
+          target: State.ERROR,
           action(payload) {
             const { contextData } = payload;
             if (contextData?.currentRoute) {
@@ -103,26 +105,26 @@ const stateMachineDefinition: MachineDefinition = {
         },
       },
     },
-    'state:about': {
+    [State.ABOUT]: {
       actions: {
         onEnter() {},
         onExit() {},
       },
       transitions: {
-        navigateLogin: {
-          target: 'state:login',
+        [Transition.NAVIGATE_LOGIN]: {
+          target: State.LOGIN,
           action(payload) {
-            payload.updateContext({ currentRoute: '/login' });
+            payload.updateContext({ currentRoute: Route.LOGIN });
           },
         },
-        navigateChat: {
-          target: 'state:chat',
+        [Transition.NAVIGATE_CHAT]: {
+          target: State.CHAT,
           action(payload) {
-            payload.updateContext({ currentRoute: '/chat' });
+            payload.updateContext({ currentRoute: Route.CHAT });
           },
         },
-        navigateError: {
-          target: 'state:404',
+        [Transition.NAVIGATE_ERROR]: {
+          target: State.ERROR,
           action(payload) {
             const { contextData } = payload;
             if (contextData?.currentRoute) {
@@ -132,32 +134,32 @@ const stateMachineDefinition: MachineDefinition = {
         },
       },
     },
-    'state:404': {
+    [State.ERROR]: {
       actions: {
         onEnter() {},
         onExit() {},
       },
       transitions: {
-        navigateLogin: {
-          target: 'state:login',
+        [Transition.NAVIGATE_LOGIN]: {
+          target: State.LOGIN,
           action(payload) {
-            payload.updateContext({ currentRoute: '/login' });
+            payload.updateContext({ currentRoute: Route.LOGIN });
           },
         },
-        navigateChat: {
-          target: 'state:chat',
+        [Transition.NAVIGATE_CHAT]: {
+          target: State.CHAT,
           action(payload) {
-            payload.updateContext({ currentRoute: '/chat' });
+            payload.updateContext({ currentRoute: Route.CHAT });
           },
         },
-        navigateAbout: {
-          target: 'state:about',
+        [Transition.NAVIGATE_ABOUT]: {
+          target: State.ABOUT,
           action(payload) {
-            payload.updateContext({ currentRoute: '/about' });
+            payload.updateContext({ currentRoute: Route.ABOUT });
           },
         },
-        navigateError: {
-          target: 'state:404',
+        [Transition.NAVIGATE_ERROR]: {
+          target: State.ERROR,
           action(payload) {
             const { contextData } = payload;
             if (contextData?.currentRoute) {
