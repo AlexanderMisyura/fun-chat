@@ -1,4 +1,5 @@
 import machine from '@state-machine/machine';
+import { Transition } from '@ts-enums';
 import type { RouteObject } from '@ts-types';
 
 function getCurrentHref(): string {
@@ -10,12 +11,26 @@ function getCurrentPathname(): string {
 }
 
 export default class Router {
+  private static _instance: Router | undefined;
   public boundHandleLink: (href: string) => void;
+  private routeObjects: RouteObject[] = [];
 
-  constructor(private routeObjects: RouteObject[]) {
+  private constructor() {
     this.boundHandleLink = this.handleLink.bind(this);
 
     globalThis.addEventListener('popstate', () => this.initialLoad());
+  }
+
+  public static get instance(): Router {
+    if (!Router._instance) {
+      Router._instance = new Router();
+    }
+
+    return Router._instance;
+  }
+
+  public setRouteObjects(routeObjects: RouteObject[]): void {
+    this.routeObjects = routeObjects;
   }
 
   public initialLoad(): void {
@@ -38,7 +53,9 @@ export default class Router {
     if (currentRouteObject) {
       currentRouteObject.callback();
     } else {
-      void machine.makeTransition(machine.value, 'navigateError', { currentRoute: pathname });
+      void machine.makeTransition(machine.value, Transition.NAVIGATE_ERROR, {
+        currentRoute: pathname,
+      });
     }
   }
 
