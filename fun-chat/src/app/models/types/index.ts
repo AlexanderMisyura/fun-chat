@@ -46,3 +46,4 @@ export type { MachineDefinition } from './state-machine/machine-definition';
 export type { MachinePayload } from './state-machine/machine-payload';
 export type { StateDefinition } from './state-machine/state-definition';
 export type { UserStorageData } from './user-storage-data';
+export type { WebSocketMessage } from './websocket-message';
