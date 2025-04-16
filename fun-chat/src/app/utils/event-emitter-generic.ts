@@ -1,4 +1,4 @@
-class Emitter<CallbackArgument extends unknown[]> {
+class Emitter<CallbackArgument extends unknown[] = []> {
   private events: Record<string, ((...arguments_: CallbackArgument) => void)[]> = {};
 
   public on(event: string, listener: (...arguments_: CallbackArgument) => void): void {
