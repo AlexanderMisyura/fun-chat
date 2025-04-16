@@ -1,0 +1,29 @@
+.preloader {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.spinner {
+  inline-size: 5rem;
+  block-size: 5rem;
+  border: 15px dotted gray;
+  border-radius: 50%;
+
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.message {
+  font-family: Enigma, monospace;
+  font-size: 2rem;
+  color: gray;
+  text-align: center;
+}
