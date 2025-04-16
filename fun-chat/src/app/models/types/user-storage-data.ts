@@ -1,5 +1,6 @@
+import type { StorageKey } from '@constants';
+import type { StoredUser } from '@ts-types';
+
 export type UserStorageData = {
-  username: string;
-  id: string | null;
-  isLoggedIn: boolean;
+  [StorageKey.USER]: StoredUser;
 };
