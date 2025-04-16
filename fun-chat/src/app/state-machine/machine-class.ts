@@ -5,13 +5,12 @@ import Emitter from './event-emitter-machine';
 export class StateMachine {
   public value: MachineDefinition['initialState'];
   public context: MachineDefinition['context'];
-  public readonly events = {
-    machineStateChanged: 'machineStateChanged',
-  } as const;
+  public readonly eventsMap: Emitter['eventsMap'];
   private emitter: Emitter = new Emitter();
   private definition: MachineDefinition;
 
   constructor(stateMachineDefinition: MachineDefinition) {
+    this.eventsMap = this.emitter.eventsMap;
     this.definition = stateMachineDefinition;
     this.value = stateMachineDefinition.initialState;
     this.context = stateMachineDefinition.context;
@@ -42,7 +41,11 @@ export class StateMachine {
     destinationStateDefinition.actions.onEnter?.(payload);
 
     this.value = destinationState;
-    this.emit(this.events.machineStateChanged, payload);
+    this.emit(this.eventsMap.machineStateChanged, payload);
+
+    console.log(
+      `machine has changed state from ${currentState} to ${destinationState} with trigger ${trigger}`
+    );
 
     return this.value;
   }
