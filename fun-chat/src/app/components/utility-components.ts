@@ -35,6 +35,12 @@ const div = (
 ): BaseComponent<'div'> =>
   new BaseComponent<'div'>({ ...properties, elementTag: 'div' }, ...children);
 
+const form = (
+  properties: UtilityTagProperties<'form'>,
+  ...children: BaseComponent<keyof HTMLElementTagNameMap>[]
+): BaseComponent<'form'> =>
+  new BaseComponent<'form'>({ ...properties, elementTag: 'form' }, ...children);
+
 const h1 = (
   properties: UtilityTagProperties<'h1'>,
   ...children: BaseComponent<keyof HTMLElementTagNameMap>[]
@@ -91,6 +97,7 @@ export default {
   button,
   details,
   div,
+  form,
   h1,
   header,
   img,
