@@ -1,4 +1,4 @@
-import { Route } from '@constants';
+import { ROUTE } from '@constants';
 import { State, Transition } from '@ts-enums';
 import type { MachineDefinition } from '@ts-types';
 
@@ -8,7 +8,7 @@ const stateMachineDefinition: MachineDefinition = {
   initialState: State.INITIAL,
 
   context: {
-    currentRoute: Route.ROOT,
+    currentRoute: ROUTE.ROOT,
   },
 
   states: {
@@ -21,19 +21,19 @@ const stateMachineDefinition: MachineDefinition = {
         [Transition.NAVIGATE_LOGIN]: {
           target: State.LOGIN,
           action(payload) {
-            payload.updateContext({ currentRoute: Route.LOGIN });
+            payload.updateContext({ currentRoute: ROUTE.LOGIN });
           },
         },
         [Transition.NAVIGATE_CHAT]: {
           target: State.CHAT,
           action(payload) {
-            payload.updateContext({ currentRoute: Route.CHAT });
+            payload.updateContext({ currentRoute: ROUTE.CHAT });
           },
         },
         [Transition.NAVIGATE_ABOUT]: {
           target: State.ABOUT,
           action(payload) {
-            payload.updateContext({ currentRoute: Route.ABOUT });
+            payload.updateContext({ currentRoute: ROUTE.ABOUT });
           },
         },
         [Transition.NAVIGATE_ERROR]: {
@@ -56,13 +56,13 @@ const stateMachineDefinition: MachineDefinition = {
         [Transition.NAVIGATE_CHAT]: {
           target: State.CHAT,
           action(payload) {
-            payload.updateContext({ currentRoute: Route.CHAT });
+            payload.updateContext({ currentRoute: ROUTE.CHAT });
           },
         },
         [Transition.NAVIGATE_ABOUT]: {
           target: State.ABOUT,
           action(payload) {
-            payload.updateContext({ currentRoute: Route.ABOUT });
+            payload.updateContext({ currentRoute: ROUTE.ABOUT });
           },
         },
         [Transition.NAVIGATE_ERROR]: {
@@ -85,13 +85,13 @@ const stateMachineDefinition: MachineDefinition = {
         [Transition.NAVIGATE_LOGIN]: {
           target: State.LOGIN,
           action(payload) {
-            payload.updateContext({ currentRoute: Route.LOGIN });
+            payload.updateContext({ currentRoute: ROUTE.LOGIN });
           },
         },
         [Transition.NAVIGATE_ABOUT]: {
           target: State.ABOUT,
           action(payload) {
-            payload.updateContext({ currentRoute: Route.ABOUT });
+            payload.updateContext({ currentRoute: ROUTE.ABOUT });
           },
         },
         [Transition.NAVIGATE_ERROR]: {
@@ -114,13 +114,13 @@ const stateMachineDefinition: MachineDefinition = {
         [Transition.NAVIGATE_LOGIN]: {
           target: State.LOGIN,
           action(payload) {
-            payload.updateContext({ currentRoute: Route.LOGIN });
+            payload.updateContext({ currentRoute: ROUTE.LOGIN });
           },
         },
         [Transition.NAVIGATE_CHAT]: {
           target: State.CHAT,
           action(payload) {
-            payload.updateContext({ currentRoute: Route.CHAT });
+            payload.updateContext({ currentRoute: ROUTE.CHAT });
           },
         },
         [Transition.NAVIGATE_ERROR]: {
@@ -143,19 +143,19 @@ const stateMachineDefinition: MachineDefinition = {
         [Transition.NAVIGATE_LOGIN]: {
           target: State.LOGIN,
           action(payload) {
-            payload.updateContext({ currentRoute: Route.LOGIN });
+            payload.updateContext({ currentRoute: ROUTE.LOGIN });
           },
         },
         [Transition.NAVIGATE_CHAT]: {
           target: State.CHAT,
           action(payload) {
-            payload.updateContext({ currentRoute: Route.CHAT });
+            payload.updateContext({ currentRoute: ROUTE.CHAT });
           },
         },
         [Transition.NAVIGATE_ABOUT]: {
           target: State.ABOUT,
           action(payload) {
-            payload.updateContext({ currentRoute: Route.ABOUT });
+            payload.updateContext({ currentRoute: ROUTE.ABOUT });
           },
         },
         [Transition.NAVIGATE_ERROR]: {

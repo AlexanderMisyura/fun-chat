@@ -1,4 +1,4 @@
-export const Route = {
+export const ROUTE = {
   ROOT: '/',
   LOGIN: '/login',
   CHAT: '/chat',

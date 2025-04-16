@@ -1,6 +1,6 @@
-import type { Route } from '@constants';
+import type { ROUTE } from '@constants';
 
 export type RouteObject = {
-  pathname: (typeof Route)[keyof typeof Route];
+  pathname: (typeof ROUTE)[keyof typeof ROUTE];
   callback: () => void;
 };
