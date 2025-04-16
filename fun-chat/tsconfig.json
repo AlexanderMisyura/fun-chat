@@ -37,6 +37,7 @@
       "@assets/*": ["src/app/assets/*"],
       "@components/*": ["src/app/components/*"],
       "@config": ["src/app/config.ts"],
+      "@constants": ["src/app/constants/index.ts"],
       "@controller/*": ["src/app/controller/*"],
       "@services/*": ["src/app/services/*"],
       "@state-machine/*": ["src/app/state-machine/*"],
