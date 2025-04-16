@@ -1,3 +1,4 @@
+import type { State, Transition } from '@ts-enums';
 import type { MachinePayload } from '@ts-types';
 
 export type StateDefinition = {
@@ -6,8 +7,8 @@ export type StateDefinition = {
     onExit?(payload: MachinePayload): void;
   };
   transitions: {
-    [key: string]: {
-      target: string;
+    [key in Transition]?: {
+      target: State;
       action?(payload: MachinePayload): void;
     };
   };

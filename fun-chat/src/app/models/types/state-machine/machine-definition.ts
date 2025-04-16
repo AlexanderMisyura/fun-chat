@@ -1,7 +1,8 @@
+import type { State } from '@ts-enums';
 import type { Context, StateDefinition } from '@ts-types';
 
 export type MachineDefinition = {
-  initialState: string;
-  states: Record<string, StateDefinition>;
+  initialState: State;
+  states: Record<State, StateDefinition>;
   context: Context;
 };
