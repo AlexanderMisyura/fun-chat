@@ -1,6 +1,6 @@
-import type { StorageKey } from '@constants';
+import type { STORAGE_KEY } from '@constants';
 import type { StoredUser } from '@ts-types';
 
 export type UserStorageData = {
-  [StorageKey.USER]: StoredUser;
+  [STORAGE_KEY.USER]: StoredUser;
 };

@@ -1,5 +1,5 @@
 export type StoredUser = {
-  username: string | undefined;
-  id: string | undefined;
+  username: string;
+  id: string;
   isLoggedIn: boolean;
 };

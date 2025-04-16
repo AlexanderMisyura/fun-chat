@@ -17,12 +17,10 @@ export default class ValidatorService {
       typeof storedUser === 'object' &&
       storedUser !== null &&
       'username' in storedUser &&
+      typeof storedUser.username === 'string' &&
       'id' in storedUser &&
+      typeof storedUser.id === 'string' &&
       'isLoggedIn' in storedUser &&
-      (typeof storedUser.username === 'string' ||
-        typeof storedUser.username === 'number' ||
-        storedUser.username === null) &&
-      (typeof storedUser.id === 'string' || storedUser.id === null) &&
       typeof storedUser.isLoggedIn === 'boolean'
     );
   }
