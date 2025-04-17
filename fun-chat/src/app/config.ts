@@ -1,4 +1,5 @@
 export default {
+  STORAGE_PREFIX: 'alexandermisyura_FC_task_',
   AUTHOR_NAME: 'Alexander Misyura',
   AUTHOR_GITHUB_LINK: 'https://github.com/AlexanderMisyura',
   COURSE_NAME: 'The Rolling Scopes School',
