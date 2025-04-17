@@ -12,6 +12,8 @@ import type { MessageSendMessage } from './message/message-send-message';
 import type { MessageSendReceiveResponseMessage } from './message/message-send-receive-response-message';
 import type { UserActiveMessage } from './message/user-active-message';
 import type { UserActiveResponseMessage } from './message/user-active-response-message';
+import type { UserExternalLoginResponseMessage } from './message/user-external-login-response-message';
+import type { UserExternalLogoutResponseMessage } from './message/user-external-logout-response-message';
 import type { UserInactiveMessage } from './message/user-inactive-message';
 import type { UserInactiveResponseMessage } from './message/user-inactive-response-message';
 import type { UserLoginMessage } from './message/user-login-message';
@@ -39,4 +41,21 @@ export type WebSocketMessageUnion =
   | UserLoginMessage
   | UserLoginResponseMessage
   | UserLogoutMessage
-  | UserLogoutResponseMessage;
+  | UserLogoutResponseMessage
+  | UserExternalLogoutResponseMessage
+  | UserExternalLoginResponseMessage;
+
+export type WebSocketResponseMessageUnion =
+  | FetchMessageHistoryResponseMessage
+  | MessageDeleteResponseMessage
+  | MessageDeliverResponseMessage
+  | MessageEditResponseMessage
+  | MessageReadResponseMessage
+  | MessageSendReceiveResponseMessage
+  | UserActiveResponseMessage
+  | UserInactiveResponseMessage
+  | UserLoginResponseMessage
+  | UserLogoutResponseMessage
+  | ErrorMessage
+  | UserExternalLogoutResponseMessage
+  | UserExternalLoginResponseMessage;

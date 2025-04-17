@@ -48,3 +48,4 @@ export type { UserStorageData } from './user-storage-data';
 export type { WebSocketBaseMessage } from './websocket-base-message';
 export type { WebSocketMessage } from './websocket-message';
 export type { WebSocketMessageUnion } from './websocket-union-message';
+export type { WebSocketResponseMessageUnion } from './websocket-union-message';
