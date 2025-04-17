@@ -26,7 +26,10 @@ class Modal extends BaseComponent<'dialog'> {
 
   public showModal(
     component: BaseComponent<keyof HTMLElementTagNameMap>,
-    { canBeClosed = true, isCloseButton = true }: { canBeClosed?: boolean; isCloseButton?: boolean }
+    {
+      canBeClosed = true,
+      isCloseButton = true,
+    }: { canBeClosed?: boolean; isCloseButton?: boolean } = {}
   ): void {
     if (this.isOpen) return;
 
