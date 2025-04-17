@@ -1,4 +1,4 @@
-import type { UserLogoutPayload } from '@ts-types';
-import type { WebSocketMessage } from '@ts-types';
+import type { USER_LOGOUT } from '@constants';
+import type { UserLogoutPayload, WebSocketMessage } from '@ts-types';
 
-export type UserLogoutMessage = WebSocketMessage<UserLogoutPayload>;
+export type UserLogoutMessage = WebSocketMessage<typeof USER_LOGOUT, UserLogoutPayload>;

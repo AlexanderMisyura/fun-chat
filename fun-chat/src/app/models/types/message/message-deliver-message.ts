@@ -1,4 +1,4 @@
-import type { MessageDeliverPayload } from '@ts-types';
-import type { WebSocketMessage } from '@ts-types';
+import type { MESSAGE_DELIVER } from '@constants';
+import type { MessageDeliverPayload, WebSocketMessage } from '@ts-types';
 
-export type MessageDeliverMessage = WebSocketMessage<MessageDeliverPayload>;
+export type MessageDeliverMessage = WebSocketMessage<typeof MESSAGE_DELIVER, MessageDeliverPayload>;

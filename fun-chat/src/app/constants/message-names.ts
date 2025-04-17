@@ -1,0 +1,14 @@
+export const ERROR = 'ERROR';
+export const USER_LOGIN = 'USER_LOGIN';
+export const USER_LOGOUT = 'USER_LOGOUT';
+export const USER_EXTERNAL_LOGIN = 'USER_EXTERNAL_LOGIN';
+export const USER_EXTERNAL_LOGOUT = 'USER_EXTERNAL_LOGOUT';
+export const USER_ACTIVE = 'USER_ACTIVE';
+export const USER_INACTIVE = 'USER_INACTIVE';
+export const MESSAGE_SEND = 'MSG_SEND';
+export const FETCH_MESSAGE_HISTORY = 'MSG_FROM_USER';
+export const MESSAGE_HISTORY_FROM_USER = 'MSG_FROM_USER';
+export const MESSAGE_DELIVER = 'MSG_DELIVER';
+export const MESSAGE_READ = 'MSG_READ';
+export const MESSAGE_DELETE = 'MSG_DELETE';
+export const MESSAGE_EDIT = 'MSG_EDIT';

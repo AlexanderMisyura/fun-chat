@@ -1,4 +1,4 @@
-import type { ErrorPayload } from '@ts-types';
-import type { WebSocketMessage } from '@ts-types';
+import type { ERROR } from '@constants';
+import type { ErrorPayload, WebSocketMessage } from '@ts-types';
 
-export type ErrorMessage = WebSocketMessage<ErrorPayload>;
+export type ErrorMessage = WebSocketMessage<typeof ERROR, ErrorPayload>;

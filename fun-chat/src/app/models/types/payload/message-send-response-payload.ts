@@ -1,5 +1,5 @@
-export type FetchMessageHistoryResponsePayload = {
-  messages: {
+export type MessageSendResponsePayload = {
+  message: {
     id: string;
     from: string;
     to: string;
@@ -10,5 +10,5 @@ export type FetchMessageHistoryResponsePayload = {
       isReaded: boolean;
       isEdited: boolean;
     };
-  }[];
+  };
 };

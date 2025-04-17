@@ -1,4 +1,7 @@
-import type { UserExternalLoginPayload } from '@ts-types';
-import type { WebSocketMessage } from '@ts-types';
+import type { USER_EXTERNAL_LOGIN } from '@constants';
+import type { UserExternalLoginPayload, WebSocketMessage } from '@ts-types';
 
-export type UserExternalLoginMessage = WebSocketMessage<UserExternalLoginPayload>;
+export type UserExternalLoginMessage = WebSocketMessage<
+  typeof USER_EXTERNAL_LOGIN,
+  UserExternalLoginPayload
+>;

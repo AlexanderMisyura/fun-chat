@@ -1,5 +1,5 @@
-export type WebSocketMessage<PayloadType = unknown> = {
+export type WebSocketMessage<MessageType, PayloadType> = {
   id: string | null;
-  type: string;
+  type: MessageType;
   payload: PayloadType;
 };

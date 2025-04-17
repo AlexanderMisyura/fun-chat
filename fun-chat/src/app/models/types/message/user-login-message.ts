@@ -1,4 +1,4 @@
-import type { UserLoginPayload } from '@ts-types';
-import type { WebSocketMessage } from '@ts-types';
+import type { USER_LOGIN } from '@constants';
+import type { UserLoginPayload, WebSocketMessage } from '@ts-types';
 
-export type UserLoginMessage = WebSocketMessage<UserLoginPayload>;
+export type UserLoginMessage = WebSocketMessage<typeof USER_LOGIN, UserLoginPayload>;

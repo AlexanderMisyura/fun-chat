@@ -23,7 +23,6 @@ export type { UserLogoutResponseMessage } from './message/user-logout-response-m
 export type { ErrorPayload } from './payload/error-payload';
 export type { FetchMessageHistoryPayload } from './payload/fetch-message-history-payload';
 export type { FetchMessageHistoryResponsePayload } from './payload/fetch-message-history-response-payload';
-export type { Message } from './payload/message';
 export type { MessageDeletePayload } from './payload/message-delete-payload';
 export type { MessageDeleteResponsePayload } from './payload/message-delete-response-payload';
 export type { MessageDeliverPayload } from './payload/message-deliver-payload';
@@ -32,7 +31,7 @@ export type { MessageEditResponsePayload } from './payload/message-edit-response
 export type { MessageReadPayload } from './payload/message-read-payload';
 export type { MessageReadResponsePayload } from './payload/message-read-response-payload';
 export type { MessageSendPayload } from './payload/message-send-payload';
-export type { MessageStatus } from './payload/message-status';
+export type { MessageSendResponsePayload } from './payload/message-send-response-payload';
 export type { User } from './payload/user';
 export type { UserActivePayload } from './payload/user-active-payload';
 export type { UserExternalLoginPayload } from './payload/user-external-login-payload';
@@ -40,6 +39,7 @@ export type { UserExternalLogoutPayload } from './payload/user-external-logout-p
 export type { UserInactivePayload } from './payload/user-inactive-payload';
 export type { UserLoginPayload } from './payload/user-login-payload';
 export type { UserLogoutPayload } from './payload/user-logout-payload';
+export type { UserPayload } from './payload/user-payload';
 export type { RouteObject } from './route-object';
 export type { Context } from './state-machine/context';
 export type { MachineDefinition } from './state-machine/machine-definition';
