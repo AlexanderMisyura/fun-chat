@@ -3,7 +3,7 @@ import tag from '@components/utility-components';
 
 import * as styles from './modal.module.scss';
 
-class Modal extends BaseComponent<'dialog'> {
+export default class Modal extends BaseComponent<'dialog'> {
   public modalControls = {
     showModal: this.showModal.bind(this),
     closeModal: this.closeModal.bind(this),
@@ -76,5 +76,3 @@ class Modal extends BaseComponent<'dialog'> {
     if (isCloseButton) this.appendSingle(this.modalControls.closeModalButton);
   }
 }
-
-export const modal = new Modal();
