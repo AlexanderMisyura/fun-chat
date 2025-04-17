@@ -1,5 +1,6 @@
 export const STORED_USER_DEFAULT = {
-  username: '',
   id: '',
+  username: '',
+  password: '',
   isLoggedIn: false,
 };

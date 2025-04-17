@@ -7,7 +7,6 @@ export const USER_ACTIVE = 'USER_ACTIVE';
 export const USER_INACTIVE = 'USER_INACTIVE';
 export const MESSAGE_SEND = 'MSG_SEND';
 export const FETCH_MESSAGE_HISTORY = 'MSG_FROM_USER';
-export const MESSAGE_HISTORY_FROM_USER = 'MSG_FROM_USER';
 export const MESSAGE_DELIVER = 'MSG_DELIVER';
 export const MESSAGE_READ = 'MSG_READ';
 export const MESSAGE_DELETE = 'MSG_DELETE';

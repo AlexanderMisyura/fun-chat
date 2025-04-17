@@ -1,7 +1,4 @@
 import type { USER_INACTIVE } from '@constants';
-import type { UserInactivePayload, WebSocketMessage } from '@ts-types';
+import type { UserArrayPayload, WebSocketMessage } from '@ts-types';
 
-export type UserInactiveResponseMessage = WebSocketMessage<
-  typeof USER_INACTIVE,
-  UserInactivePayload
->;
+export type UserInactiveResponseMessage = WebSocketMessage<typeof USER_INACTIVE, UserArrayPayload>;

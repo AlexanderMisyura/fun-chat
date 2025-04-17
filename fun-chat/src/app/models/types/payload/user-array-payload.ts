@@ -1,5 +1,5 @@
 import type { User } from '@ts-types';
 
-export type UserActivePayload = {
+export type UserArrayPayload = {
   users: User[];
 };

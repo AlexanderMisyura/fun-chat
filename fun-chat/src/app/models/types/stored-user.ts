@@ -1,5 +1,6 @@
 export type StoredUser = {
-  username: string;
   id: string;
+  username: string;
+  password: string;
   isLoggedIn: boolean;
 };

@@ -1,4 +1,4 @@
-export type MessageDeliverPayload = {
+export type MessageDeliverResponsePayload = {
   message: {
     id: string;
     status: {
