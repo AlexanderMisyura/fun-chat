@@ -1,3 +1,5 @@
+import { ZERO_LENGTH } from '@constants';
+
 export type ComponentProperties<K extends keyof HTMLElementTagNameMap = 'div'> = Partial<
   HTMLElementTagNameMap[K]
 > & {
@@ -5,8 +7,6 @@ export type ComponentProperties<K extends keyof HTMLElementTagNameMap = 'div'> =
   elementTag: K;
   classes?: string[];
 };
-
-const ZERO_LENGTH = 0;
 
 export default class BaseComponent<K extends keyof HTMLElementTagNameMap = 'div'> {
   public childComponents: BaseComponent<keyof HTMLElementTagNameMap>[] = [];
