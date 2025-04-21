@@ -44,10 +44,6 @@ export class StateMachine {
     this.value = destinationState;
     this.emit(this.eventsMap.machineStateChanged, payload);
 
-    console.log(
-      `machine has changed state from ${currentState} to ${destinationState} with trigger ${trigger}`
-    );
-
     return this.value;
   }
 
