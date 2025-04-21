@@ -1,0 +1,28 @@
+.placeholder {
+  user-select: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  block-size: 100%;
+  padding: 1rem;
+}
+
+.conversation {
+  overflow-y: scroll;
+  block-size: 100%;
+  margin-inline-end: 0.2rem;
+
+  &.hasMessages {
+    align-content: end;
+
+    .placeholder {
+      display: none;
+    }
+  }
+}
+
+.unread {
+  display: block;
+}
