@@ -1,0 +1,99 @@
+.login {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  align-items: center;
+  justify-content: center;
+
+  inline-size: 100%;
+  max-inline-size: 500px;
+
+  font-family: Enigma, monospace;
+}
+
+.headingLink {
+  position: relative;
+
+  border: none;
+
+  font-family: Enigma, monospace;
+  font-size: 1.5rem;
+  text-align: center;
+  text-wrap: balance;
+
+  &::after {
+    content: '/about';
+
+    position: absolute;
+    inset-inline-end: 0;
+    transform: translate(90%, 80%);
+
+    font-size: 1rem;
+    color: green;
+
+    opacity: 0;
+
+    transition:
+      display 0.3s allow-discrete,
+      opacity 0.3s allow-discrete;
+
+    @media (width <= 405px) {
+      transform: translate(0%, 105%);
+    }
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover::after {
+      display: inline;
+      opacity: 1;
+    }
+  }
+
+  @media (pointer: coarse) {
+    &::after {
+      display: inline;
+      opacity: 1;
+    }
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+
+  inline-size: 100%;
+}
+
+.input,
+.submitButton {
+  inline-size: 100%;
+  max-inline-size: 290px;
+  padding-block: 0.5rem;
+  padding-inline: 1rem;
+}
+
+.message {
+  max-inline-size: 290px;
+  margin-block-end: 1rem;
+
+  font-family: Doto-ExtraBold, monospace;
+  font-size: 0.8rem;
+  color: red;
+  text-align: justify;
+}
+
+.error {
+  border-block-end: 1px dashed lightgray;
+
+  &:not(:last-child) {
+    margin-block-end: 0.3rem;
+    line-height: 0.9rem;
+  }
+}
+
+.submitButton:disabled {
+  border-style: dashed;
+}
