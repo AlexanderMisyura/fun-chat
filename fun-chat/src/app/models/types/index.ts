@@ -44,6 +44,7 @@ export type { MachineDefinition } from './state-machine/machine-definition';
 export type { MachinePayload } from './state-machine/machine-payload';
 export type { StateDefinition } from './state-machine/state-definition';
 export type { StoredUser } from './stored-user';
+export type { UserMessage } from './user-message';
 export type { UserStorageData } from './user-storage-data';
 export type { WebSocketBaseMessage } from './websocket-base-message';
 export type { WebSocketMessage } from './websocket-message';
