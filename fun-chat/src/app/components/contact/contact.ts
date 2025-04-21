@@ -30,6 +30,7 @@ const ZERO_UNREAD_MESSAGES_NUMBER = 0;
 
 export default class Contact extends BaseComponent<'li'> {
   public conversation: Conversation | undefined;
+  public hasUnread: boolean = false;
   public messages: Message[] = [];
   private isOnline: boolean = false;
   private unread: BaseComponent<'span'>;
@@ -65,11 +66,17 @@ export default class Contact extends BaseComponent<'li'> {
     ).length;
 
     if (unreadNumber === ZERO_UNREAD_MESSAGES_NUMBER) {
+      this.hasUnread = false;
       this.unread.addClasses(styles.noUnread);
     } else {
+      this.hasUnread = true;
       this.unread.setText(unreadNumber.toString());
       this.unread.removeClasses(styles.noUnread);
     }
+
+    this.getElement().dispatchEvent(
+      new CustomEvent(CustomAppEvent.UPDATE_UNREAD, { bubbles: true })
+    );
   }
 
   private updateOnlineStatus(): void {

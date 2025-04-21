@@ -4,12 +4,13 @@ import type Contact from '@components/contact/contact';
 import ContactList from '@components/contact-list/contact-list';
 import MessagePanel from '@components/message-panel/message-panel';
 import tag from '@components/utility-components';
-import { PARSED_MESSAGE, USER_LOGIN, USER_LOGOUT } from '@constants';
+import { DEBOUNCE_TIMEOUT, PARSED_MESSAGE, USER_LOGIN, USER_LOGOUT } from '@constants';
 import Controller from '@controller/controller';
 import WebSocketService from '@services/websocket.service';
 import machine from '@state-machine/machine';
 import { CustomAppEvent } from '@ts-enums';
 import type { Message, WebSocketResponseMessageUnion } from '@ts-types';
+import { eventDebounceWrapper } from '@utils/debounce-wrapper';
 
 import * as styles from './chat.module.scss';
 
@@ -25,6 +26,7 @@ export default class Chat extends BaseComponent<'div'> {
   private editMessage: Message | undefined;
   private currentContact: Contact | undefined;
   private chatInput: ChatInput;
+  private dot: BaseComponent<'span'> = tag.span({ classes: [styles.dot] });
 
   constructor(private followLink: (event: Event) => void) {
     super({
@@ -84,7 +86,8 @@ export default class Chat extends BaseComponent<'div'> {
           }
         },
       },
-      tag.span({ classes: [styles.burger] })
+      tag.span({ classes: [styles.burger] }),
+      this.dot
     );
 
     return this.contactListShowButton;
@@ -144,6 +147,26 @@ export default class Chat extends BaseComponent<'div'> {
     this.getElement().addEventListener(CustomAppEvent.EDIT_MESSAGE, ((
       customEvent: CustomEvent<Message>
     ) => this.handleDispatchEditMessage(customEvent)) as EventListener);
+
+    this.getElement().addEventListener(
+      CustomAppEvent.UPDATE_UNREAD,
+      eventDebounceWrapper(() => this.handleUpdateUnread(), DEBOUNCE_TIMEOUT)
+    );
+  }
+
+  private handleUpdateUnread(): void {
+    const hasNoUnreadFromLoggedIn = this.contactList.loggedInContacts.every(
+      (contact) => !contact.hasUnread
+    );
+    const hasNoUnreadFromLoggedOut = this.contactList.loggedOutContacts.every(
+      (contact) => !contact.hasUnread
+    );
+
+    if (hasNoUnreadFromLoggedIn && hasNoUnreadFromLoggedOut) {
+      this.dot.removeClasses(styles.active);
+    } else {
+      this.dot.addClasses(styles.active);
+    }
   }
 
   private handleDispatchContact(event: CustomEvent<Contact>): void {

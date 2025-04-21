@@ -29,8 +29,8 @@ const controller = Controller.instance;
 const socket = WebSocketService.instance;
 
 export default class ContactList extends BaseComponent<'div'> {
-  private loggedInContacts: Contact[] = [];
-  private loggedOutContacts: Contact[] = [];
+  public loggedInContacts: Contact[] = [];
+  public loggedOutContacts: Contact[] = [];
   private list: BaseComponent<'ul'>;
   private filter: string = '';
 
