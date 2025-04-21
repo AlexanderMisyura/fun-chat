@@ -217,7 +217,7 @@ export default class Validator {
       this.isObjectHoldsMessage(payload) &&
       this.isObject(payload.message) &&
       'id' in payload.message &&
-      typeof payload.message.id === 'string' &&
+      (typeof payload.message.id === 'string' || payload.message.id === null) &&
       'text' in payload.message &&
       typeof payload.message.text === 'string' &&
       'status' in payload.message &&
@@ -234,7 +234,7 @@ export default class Validator {
       this.isObjectHoldsMessage(payload) &&
       this.isObject(payload.message) &&
       'id' in payload.message &&
-      typeof payload.message.id === 'string' &&
+      (typeof payload.message.id === 'string' || payload.message.id === null) &&
       'status' in payload.message &&
       this.isObject(payload.message.status) &&
       'isDeleted' in payload.message.status &&
@@ -247,11 +247,11 @@ export default class Validator {
       this.isObjectHoldsMessage(payload) &&
       this.isObject(payload.message) &&
       'id' in payload.message &&
-      typeof payload.message.id === 'string' &&
+      (typeof payload.message.id === 'string' || payload.message.id === null) &&
       'status' in payload.message &&
       this.isObject(payload.message.status) &&
-      'isRead' in payload.message.status &&
-      typeof payload.message.status.isRead === 'boolean'
+      'isReaded' in payload.message.status &&
+      typeof payload.message.status.isReaded === 'boolean'
     );
   }
 
@@ -262,7 +262,7 @@ export default class Validator {
       this.isObjectHoldsMessage(payload) &&
       this.isObject(payload.message) &&
       'id' in payload.message &&
-      typeof payload.message.id === 'string' &&
+      (typeof payload.message.id === 'string' || payload.message.id === null) &&
       'status' in payload.message &&
       this.isObject(payload.message.status) &&
       'isDelivered' in payload.message.status &&
