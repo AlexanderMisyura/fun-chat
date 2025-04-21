@@ -1,0 +1,141 @@
+@use './fonts';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --clr-darkest-grey: rgb(45 45 45);
+  --clr-rs-yellow: rgb(255 183 73);
+  --clr-light-gray-semi-transparent: rgb(211 211 211 / 80%);
+
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: whitesmoke;
+
+  -webkit-tap-highlight-color: transparent;
+
+  :has(dialog:open) {
+    overflow: hidden;
+  }
+}
+
+input {
+  appearance: none;
+}
+
+input[type='search']::-webkit-search-cancel-button {
+  cursor: pointer;
+}
+
+.button,
+.input {
+  padding-block: 0.2rem;
+  padding-inline: 0.5rem;
+  border: 1px solid var(--clr-darkest-grey);
+  border-radius: 3px;
+
+  font-family: inherit;
+  font-size: 100%;
+}
+
+.button {
+  cursor: pointer;
+  user-select: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: inherit;
+
+  transition: background-color 0.3s;
+
+  &:disabled {
+    cursor: default;
+    border-color: gray;
+    border-style: dashed;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover:not(:disabled) {
+      background-color: lightgrey;
+    }
+  }
+}
+
+a {
+  display: block;
+  border-block-end: 1px dashed;
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style-type: none;
+}
+
+dialog {
+  opacity: 0;
+  transition:
+    display 0.3s allow-discrete,
+    overlay 0.3s allow-discrete,
+    opacity 0.3s;
+
+  &:focus-visible {
+    outline: none;
+  }
+}
+
+::backdrop {
+  opacity: 0;
+  transition:
+    display 0.3s allow-discrete,
+    overlay 0.3s allow-discrete,
+    opacity 0.3s,
+    background-color 0.3s,
+    backdrop-filter 0.3s;
+}
+
+dialog[open] {
+  opacity: 1;
+}
+
+dialog[open]::backdrop {
+  opacity: 1;
+  background-color: var(--clr-light-gray-semi-transparent);
+  backdrop-filter: blur(3px);
+}
+
+@starting-style {
+  dialog[open] {
+    opacity: 0;
+  }
+
+  dialog[open]::backdrop {
+    opacity: 0;
+    background-color: transparent;
+    backdrop-filter: blur(0);
+  }
+}
+
+.scrollbar {
+  &::-webkit-scrollbar {
+    inline-size: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: lightgray;
+    box-shadow:
+      inset 3px 0 4px 2px #bdbdbdb3,
+      inset -3px 0 4px 1px #303030b3;
+  }
+}

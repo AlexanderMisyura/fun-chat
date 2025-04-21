@@ -1,0 +1,27 @@
+@font-face {
+  font-family: Enigma;
+  font-weight: 400;
+  font-style: normal;
+  src: url('@assets/fonts/enigma.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: Doto-SemiBold;
+  font-weight: 600;
+  font-style: semi-bold;
+  src: url('@assets/fonts/Doto-SemiBold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: Doto-ExtraBold;
+  font-weight: 800;
+  font-style: extra-bold;
+  src: url('@assets/fonts/Doto-ExtraBold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: GNUTypewriter;
+  font-weight: 400;
+  font-style: normal;
+  src: url('@assets/fonts/gtw.woff2') format('woff2');
+}
