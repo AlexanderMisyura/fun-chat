@@ -1,0 +1,84 @@
+.contact {
+  cursor: pointer;
+
+  position: relative;
+
+  inline-size: 100%;
+  padding: 0.5rem;
+  border-block-end: 1px dashed gray;
+
+  transition: background-color 0.3s;
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      background-color: lightgray;
+    }
+  }
+}
+
+.container {
+  display: flex;
+  align-items: center;
+}
+
+.name {
+  font-family: Enigma, monospace;
+
+  anchor-name: --contact-name;
+}
+
+.online {
+  display: none;
+  color: mediumseagreen;
+}
+
+.offline {
+  display: block;
+  color: gray;
+}
+
+.status {
+  position: absolute;
+  inset-block-start: calc(anchor(top) - 12px);
+  inset-inline-start: calc(anchor(right) + 2px);
+
+  inline-size: 20px;
+  block-size: 20px;
+
+  position-anchor: --contact-name;
+
+  &.isOnline {
+    .online {
+      display: block;
+    }
+
+    .offline {
+      display: none;
+    }
+  }
+}
+
+.unread {
+  user-select: none;
+
+  position: absolute;
+  inset-block-start: calc(anchor(bottom) - 8px);
+  inset-inline-start: calc(anchor(right) + 3px);
+
+  padding: 0.2rem;
+  border: 1px solid darkred;
+  border-radius: 3px;
+
+  font-size: 0.6rem;
+  font-weight: 600;
+  color: darkred;
+  letter-spacing: 1px;
+
+  background-color: mistyrose;
+
+  position-anchor: --contact-name;
+
+  &.noUnread {
+    display: none;
+  }
+}
