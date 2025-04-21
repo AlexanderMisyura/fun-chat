@@ -12,6 +12,9 @@
   padding: 0;
   border: none;
 
+  font-family: Enigma, monospace;
+  color: gray;
+
   background-color: transparent;
 }
 
@@ -24,10 +27,17 @@
   padding-block: 2rem;
   padding-inline: 2rem;
 
+  font-size: 1.5rem;
+  font-weight: 600;
   text-align: center;
+  text-wrap: balance;
 }
 
 .closeBtn {
   inline-size: 100%;
+  padding-block: 0.5rem;
+  padding-inline: 1rem;
+
+  font-weight: 600;
   text-align: center;
 }
