@@ -1,0 +1,50 @@
+.chatInput {
+  display: grid;
+  grid-area: chatInput;
+  grid-template-columns: 1fr auto auto;
+  gap: 1px;
+
+  @media (width <= 500px) {
+    &.listIsOpen {
+      display: none;
+    }
+  }
+}
+
+.input {
+  resize: none;
+
+  inline-size: 100%;
+  padding: 0.5rem;
+  border: 1px solid gray;
+
+  font-family: GNUTypewriter, monospace;
+}
+
+.icon {
+  inline-size: 3rem;
+  block-size: 3rem;
+}
+
+.cancelButton {
+  display: none;
+
+  &.edit {
+    display: flex;
+  }
+}
+
+.sendButton,
+.cancelButton {
+  inline-size: 62px;
+  block-size: 62px;
+  padding-block: 0;
+  padding-inline: 2px 0;
+  border: 1px solid gray;
+
+  &:disabled {
+    .icon {
+      color: gray;
+    }
+  }
+}
