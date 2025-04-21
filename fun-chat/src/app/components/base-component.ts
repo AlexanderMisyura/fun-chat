@@ -85,12 +85,6 @@ export default class BaseComponent<K extends keyof HTMLElementTagNameMap = 'div'
 
     this.removeChildren();
     this.element.remove();
-
-    if (this.parentComponent) {
-      this.parentComponent.childComponents = this.parentComponent.childComponents.filter(
-        (child) => child !== this
-      );
-    }
   }
 
   public removeChildren(): this {
