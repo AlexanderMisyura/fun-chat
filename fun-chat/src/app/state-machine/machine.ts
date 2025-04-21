@@ -1,4 +1,6 @@
-import { ROUTE } from '@constants';
+import { PRELOAD_MESSAGE, ROUTE } from '@constants';
+import NotificationService from '@services/notification.service';
+import WebSocketService from '@services/websocket.service';
 import { State, Transition } from '@ts-enums';
 import type { MachineDefinition } from '@ts-types';
 
@@ -9,13 +11,20 @@ const stateMachineDefinition: MachineDefinition = {
 
   context: {
     currentRoute: ROUTE.ROOT,
+    id: '',
+    username: '',
+    password: '',
+    isLoggedIn: false,
   },
 
   states: {
     [State.INITIAL]: {
       actions: {
         onEnter() {},
-        onExit() {},
+        onExit() {
+          NotificationService.instance.showPreloader(PRELOAD_MESSAGE.LOADING);
+          WebSocketService.instance.openConnection();
+        },
       },
       transitions: {
         [Transition.NAVIGATE_LOGIN]: {
