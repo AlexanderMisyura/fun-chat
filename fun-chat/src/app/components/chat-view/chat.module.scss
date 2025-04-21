@@ -1,0 +1,162 @@
+.chat {
+  display: grid;
+  grid-template:
+    'header header' auto
+    'message contacts' 1fr
+    'chatInput contacts' auto / 1fr auto;
+  gap: 1rem;
+  inline-size: 100%;
+
+  @media (width <= 768px) {
+    &:not(:has(.chatListButton.active)) {
+      column-gap: 0;
+    }
+  }
+
+  @media (width <= 500px) {
+    column-gap: 0;
+
+    &:has(.chatListButton.active) {
+      grid-template:
+        'header header' auto
+        'message contacts' 1fr
+        'chatInput contacts' / auto 1fr;
+    }
+  }
+}
+
+.header {
+  user-select: none;
+
+  display: flex;
+  grid-area: header;
+  align-items: center;
+  justify-content: space-between;
+
+  inline-size: 100%;
+  block-size: 60px;
+  padding: 0.5rem;
+  border-block-end: 1px solid gray;
+}
+
+.headingLink {
+  position: relative;
+  border: none;
+  font-family: Enigma, monospace;
+  font-size: 1.5rem;
+
+  &::after {
+    content: '/about';
+
+    position: absolute;
+    inset-inline-end: 0;
+    transform: translate(90%, 80%);
+
+    font-size: 1rem;
+    color: green;
+
+    opacity: 0;
+
+    transition:
+      display 0.3s allow-discrete,
+      opacity 0.3s allow-discrete;
+
+    @media (width <= 500px) {
+      font-size: 0.8rem;
+    }
+  }
+
+  @media (width <= 500px) {
+    font-size: 1rem;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover::after {
+      display: inline;
+      opacity: 1;
+    }
+  }
+
+  @media (pointer: coarse) {
+    &::after {
+      display: inline;
+      opacity: 1;
+    }
+  }
+}
+
+.userContainer {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.user {
+  font-family: Enigma, monospace;
+  font-weight: 600;
+}
+
+.logoutButton {
+  font-family: Enigma, monospace;
+  font-size: 0.8rem;
+}
+
+.chatListButton {
+  padding: 0;
+
+  @media (width > 768px) {
+    display: none;
+  }
+}
+
+.burger {
+  position: relative;
+  inline-size: 40px;
+  block-size: 40px;
+
+  &::before,
+  &::after {
+    content: '';
+
+    position: absolute;
+
+    inline-size: 20px;
+    block-size: 1px;
+
+    background-color: black;
+
+    transition:
+      transform 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28),
+      background-color 0.3s ease-in;
+  }
+
+  &::before {
+    inset-block-start: 15px;
+    inset-inline-start: 50%;
+    transform: translateX(-50%);
+  }
+
+  &::after {
+    inset-block-end: 15px;
+    inset-inline-start: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+.chatListButton.active {
+  .burger::before {
+    inset-block-start: 20px;
+    inset-inline-start: 50%;
+    transform: translateX(-50%) rotate(135deg);
+  }
+
+  .burger::after {
+    inset-block-end: 19px;
+    inset-inline-start: 50%;
+    transform: translateX(-50%) rotate(-135deg);
+  }
+}
+
+.hidden {
+  display: none;
+}
