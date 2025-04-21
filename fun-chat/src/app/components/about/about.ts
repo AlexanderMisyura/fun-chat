@@ -1,5 +1,6 @@
 import BaseComponent from '@components/base-component';
 import tag from '@components/utility-components';
+import { ROUTE } from '@constants';
 
 import * as styles from './about.module.scss';
 
@@ -19,8 +20,8 @@ export default class About extends BaseComponent<'div'> {
 
     const link = tag.a({
       classes: [styles.link],
-      href: '/chat',
-      text: 'Back to Chat',
+      href: ROUTE.CHAT,
+      text: 'Go Back',
       onclick: this.followLink,
     });
 
