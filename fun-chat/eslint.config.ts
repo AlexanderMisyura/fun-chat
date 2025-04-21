@@ -64,6 +64,13 @@ export default tseslint.config(
   },
 
   {
+    files: ['./src/app/constants/values.ts'],
+    rules: {
+      'unicorn/no-null': 'off',
+    },
+  },
+
+  {
     ignores: ['eslint.config.ts', 'webpack.config.ts'],
     rules: {
       'max-lines-per-function': ['error', { max: 40 }],
