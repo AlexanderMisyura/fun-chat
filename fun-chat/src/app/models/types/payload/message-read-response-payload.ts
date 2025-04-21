@@ -1,6 +1,6 @@
 export type MessageReadResponsePayload = {
   message: {
-    id: string;
+    id: string | null;
     status: {
       isReaded: boolean;
     };

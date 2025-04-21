@@ -1,6 +1,6 @@
 export type MessageDeleteResponsePayload = {
   message: {
-    id: string;
+    id: string | null;
     status: {
       isDeleted: boolean;
     };

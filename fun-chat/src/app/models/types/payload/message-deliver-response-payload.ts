@@ -1,6 +1,6 @@
 export type MessageDeliverResponsePayload = {
   message: {
-    id: string;
+    id: string | null;
     status: {
       isDelivered: boolean;
     };
