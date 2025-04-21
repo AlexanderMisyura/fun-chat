@@ -1,1 +1,0 @@
-export const PARSED_MESSAGE = 'PARSED_MESSAGE';

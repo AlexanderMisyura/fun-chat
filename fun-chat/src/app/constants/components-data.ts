@@ -1,4 +1,4 @@
 export const PRELOAD_MESSAGE = {
-  INITIAL: 'Loading...',
+  LOADING: 'Loading...',
   RECONNECTING: 'Reconnecting...',
 } as const;
