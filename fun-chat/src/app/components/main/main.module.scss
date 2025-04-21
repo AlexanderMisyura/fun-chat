@@ -1,0 +1,29 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+
+  min-block-size: 100dvh;
+}
+
+.content {
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+
+  inline-size: 100%;
+  max-inline-size: 1200px;
+  padding-block: 0;
+  padding-inline: 1rem;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  inline-size: 100%;
+  max-inline-size: 1200px;
+}
