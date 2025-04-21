@@ -16,6 +16,7 @@ export default class Modal extends BaseComponent<'dialog'> {
 
   private content: BaseComponent | undefined;
   private canBeClosed: boolean = true;
+  private isCloseOnClickWithin: boolean = false;
   private isOpen: boolean = false;
 
   constructor() {
@@ -29,11 +30,14 @@ export default class Modal extends BaseComponent<'dialog'> {
     {
       canBeClosed = true,
       isCloseButton = true,
-    }: { canBeClosed?: boolean; isCloseButton?: boolean } = {}
+      isCloseOnClickWithin = false,
+    }: { canBeClosed?: boolean; isCloseButton?: boolean; isCloseOnClickWithin?: boolean } = {}
   ): void {
     if (this.isOpen) return;
 
     this.canBeClosed = canBeClosed;
+    this.isCloseOnClickWithin = isCloseOnClickWithin;
+
     this.isOpen = true;
 
     this.createModal(isCloseButton);
@@ -45,6 +49,7 @@ export default class Modal extends BaseComponent<'dialog'> {
   }
 
   public closeModal(): void {
+    this.isCloseOnClickWithin = true;
     if (this.canBeClosed) this.getElement().close();
   }
 
@@ -54,6 +59,7 @@ export default class Modal extends BaseComponent<'dialog'> {
 
   private addListeners(): void {
     this.addListener('click', (event: Event) => {
+      if (this.isCloseOnClickWithin) this.closeModal();
       if (event.target === event.currentTarget) this.closeModal();
     });
 
