@@ -107,6 +107,8 @@ export default class ContactList extends BaseComponent<'div'> {
   }
 
   private handleUserLoginResponseMessage(): void {
+    for (const contact of this.loggedInContacts) contact.removeListeners();
+    for (const contact of this.loggedOutContacts) contact.removeListeners();
     controller.makeRequestGetActiveUsers();
     controller.makeRequestGetInactiveUsers();
   }

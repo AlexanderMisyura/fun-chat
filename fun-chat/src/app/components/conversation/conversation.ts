@@ -23,6 +23,8 @@ export default class Conversation extends BaseComponent {
   public readonly correspondent: User;
   public areMessagesRead: boolean = false;
   public boundReadMessages: () => void = this.readMessages.bind(this);
+  private boundHandleWebSocketParsedMessage: (message: WebSocketResponseMessageUnion) => void =
+    this.handleWebSocketParsedMessage.bind(this);
   private placeholder: BaseComponent<'p'>;
   private messages: Message[];
   private unreadMessage: ChatMessage | undefined;
@@ -86,6 +88,10 @@ export default class Conversation extends BaseComponent {
     }
   }
 
+  public removeListeners(): void {
+    socket.offMessage(PARSED_MESSAGE, this.boundHandleWebSocketParsedMessage);
+  }
+
   private fillConversation(): void {
     if (this.messages.length > ZERO_LENGTH) {
       let hasUnreadMessage = false;
@@ -118,11 +124,13 @@ export default class Conversation extends BaseComponent {
   }
 
   private addListeners(): void {
-    socket.onMessage(PARSED_MESSAGE, (message: WebSocketResponseMessageUnion) => {
-      if (message.type === MESSAGE_SEND) this.handleMessageSendResponseMessage(message);
-    });
+    socket.onMessage(PARSED_MESSAGE, this.boundHandleWebSocketParsedMessage);
 
     this.addListener('click', this.boundReadMessages);
+  }
+
+  private handleWebSocketParsedMessage(message: WebSocketResponseMessageUnion): void {
+    if (message.type === MESSAGE_SEND) this.handleMessageSendResponseMessage(message);
   }
 
   private readMessages(): void {

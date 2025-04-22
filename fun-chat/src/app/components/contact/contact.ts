@@ -35,6 +35,7 @@ export default class Contact extends BaseComponent<'li'> {
   private isOnline: boolean = false;
   private unread: BaseComponent<'span'>;
   private status: BaseComponent<'div'>;
+  private boundHandleWebSocketParsedMessage = this.handleWebSocketParsedMessage.bind(this);
 
   constructor(public readonly user: User) {
     super({
@@ -79,6 +80,11 @@ export default class Contact extends BaseComponent<'li'> {
     );
   }
 
+  public removeListeners(): void {
+    socket.offMessage(PARSED_MESSAGE, this.boundHandleWebSocketParsedMessage);
+    this.conversation?.removeListeners();
+  }
+
   private updateOnlineStatus(): void {
     if (this.conversation) this.conversation.correspondent.isLogined = this.isOnline;
 
@@ -87,22 +93,25 @@ export default class Contact extends BaseComponent<'li'> {
   }
 
   private addListeners(): void {
-    socket.onMessage(PARSED_MESSAGE, (message: WebSocketResponseMessageUnion) => {
-      if (message.type === USER_EXTERNAL_LOGIN && message.payload.user.login === this.user.login) {
-        this.isOnline = message.payload.user.isLogined;
-        this.updateOnlineStatus();
-      }
-
-      if (message.type === USER_EXTERNAL_LOGOUT && message.payload.user.login === this.user.login) {
-        this.isOnline = message.payload.user.isLogined;
-        this.updateOnlineStatus();
-      }
-
-      if (message.type === FETCH_MESSAGE_HISTORY && message.id === this.user.login)
-        this.handleFetchMessageHistoryResponseMessage(message);
-    });
+    socket.onMessage(PARSED_MESSAGE, this.boundHandleWebSocketParsedMessage);
 
     this.addListener('click', () => this.dispatchMessages());
+  }
+
+  private handleWebSocketParsedMessage(message: WebSocketResponseMessageUnion): void {
+    if (message.type === USER_EXTERNAL_LOGIN && message.payload.user.login === this.user.login) {
+      this.isOnline = message.payload.user.isLogined;
+      this.updateOnlineStatus();
+    }
+
+    if (message.type === USER_EXTERNAL_LOGOUT && message.payload.user.login === this.user.login) {
+      this.isOnline = message.payload.user.isLogined;
+      this.updateOnlineStatus();
+    }
+
+    if (message.type === FETCH_MESSAGE_HISTORY && message.id === this.user.login) {
+      this.handleFetchMessageHistoryResponseMessage(message);
+    }
   }
 
   private handleFetchMessageHistoryResponseMessage(
