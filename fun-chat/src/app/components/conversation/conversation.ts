@@ -2,7 +2,7 @@ import BaseComponent from '@components/base-component';
 import ChatMessage from '@components/chat-message/chat-message';
 import type Contact from '@components/contact/contact';
 import tag from '@components/utility-components';
-import { MESSAGE_SEND, PARSED_MESSAGE, ZERO_LENGTH } from '@constants';
+import { DEBOUNCE_TIMEOUT, MESSAGE_SEND, PARSED_MESSAGE, ZERO_LENGTH } from '@constants';
 import Controller from '@controller/controller';
 import WebSocketService from '@services/websocket.service';
 import machine from '@state-machine/machine';
@@ -13,6 +13,7 @@ import type {
   UserMessage,
   WebSocketResponseMessageUnion,
 } from '@ts-types';
+import { eventDebounceWrapper } from '@utils/debounce-wrapper';
 
 import * as styles from './conversation.module.scss';
 
@@ -127,6 +128,9 @@ export default class Conversation extends BaseComponent {
     socket.onMessage(PARSED_MESSAGE, this.boundHandleWebSocketParsedMessage);
 
     this.addListener('click', this.boundReadMessages);
+    this.addListener('wheel', eventDebounceWrapper(this.boundReadMessages, DEBOUNCE_TIMEOUT), {
+      passive: true,
+    });
   }
 
   private handleWebSocketParsedMessage(message: WebSocketResponseMessageUnion): void {
