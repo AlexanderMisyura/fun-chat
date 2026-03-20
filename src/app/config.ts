@@ -5,6 +5,6 @@ export default {
   COURSE_NAME: 'The Rolling Scopes School',
   COURSE_LINK: 'https://rs.school/courses/javascript-ru',
   YEAR: '2025',
-  API_URL: 'ws://localhost:4000',
+  API_URL: process.env.API_URL || 'ws://localhost:4000',
   RECONNECT_DELAY: 2000,
 } as const;

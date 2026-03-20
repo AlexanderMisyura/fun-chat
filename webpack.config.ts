@@ -2,15 +2,20 @@ import 'webpack-dev-server';
 
 import path from 'node:path';
 
+import Dotenv from 'dotenv';
 import EslintPlugin from 'eslint-webpack-plugin';
 import FaviconsWebpackPlugin from 'favicons-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import StylelintPlugin from 'stylelint-webpack-plugin';
 import { TsconfigPathsPlugin } from 'tsconfig-paths-webpack-plugin';
-import type webpack from 'webpack';
+import webpack from 'webpack';
 
 const { dirname } = import.meta;
+
+const dotenv = Dotenv.config({
+  path: path.join(dirname, '.env'),
+});
 
 const config = (environment: { production?: boolean }): webpack.Configuration => {
   const isDevelopment = !environment.production;
@@ -36,7 +41,7 @@ const config = (environment: { production?: boolean }): webpack.Configuration =>
 
     output: {
       publicPath: '/',
-      filename: 'index.js',
+      filename: '[name].[contenthash].js',
       path: path.resolve(dirname, './dist'),
       assetModuleFilename: 'assets[name][est][query]',
       clean: true,
@@ -114,6 +119,9 @@ const config = (environment: { production?: boolean }): webpack.Configuration =>
       new MiniCssExtractPlugin({ filename: '[name].[contenthash].css' }),
       new EslintPlugin({ configType: 'flat', extensions: 'ts' }),
       new StylelintPlugin(),
+      new webpack.EnvironmentPlugin({
+        API_URL: dotenv.parsed?.API_URL || 'ws://localhost:4000',
+      }),
     ],
   };
 };
